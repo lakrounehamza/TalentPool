@@ -81,7 +81,12 @@ class UserAuthController extends Controller
                 return  response()->json(["success" => false ,
                 "message" => "Aucun utilisateur connecté n'est associé à cet email"
         ],202);
-        
+        if(!Hash::check($validateData['password'],$user->password))
+            return response()->json([
+                "seccess" => false,
+                "message" => "le mode passé n'est pas valide",
+            ],202); 
+            
         return  response()->json(["message" => "login"]);
 
         }catch(ValidationException  $e){
