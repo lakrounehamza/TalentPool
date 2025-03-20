@@ -76,7 +76,12 @@ class UserAuthController extends Controller
                 "email" => "required",
                 "password" => "required"
             ]);
-            
+            $user =User::where('email',$validateData['email'])->first();
+            if(!$user)
+                return  response()->json(["success" => false ,
+                "message" => "Aucun utilisateur connecté n'est associé à cet email"
+        ],202);
+        
         return  response()->json(["message" => "login"]);
 
         }catch(ValidationException  $e){
