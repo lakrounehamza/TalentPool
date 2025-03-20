@@ -70,4 +70,18 @@ class UserAuthController extends Controller
             ], 500);
         }
     }
+    public  function login(Request $request){
+        try{
+            $validateData = $request->validate([
+                "email" => "required",
+                "password" => "required"
+            ]);
+            
+        return  response()->json(["message" => "login"]);
+
+        }catch(ValidationException  $e){
+            return  response()->json(["success" => false,"message" => "Erreur de validation",
+                "errors" => $e->errors()], 422);
+        }
+    }
 }
