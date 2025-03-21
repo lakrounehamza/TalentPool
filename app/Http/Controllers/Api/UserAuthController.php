@@ -10,6 +10,9 @@ use Illuminate\Validation\Rules\Password;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class UserAuthController extends Controller
 {
@@ -70,7 +73,7 @@ class UserAuthController extends Controller
             ], 500);
         }
     }
-    public  function login(Request $request){
+    public  function login(Request $request){ 
         try{
             $validateData = $request->validate([
                 "email" => "required",
@@ -85,8 +88,23 @@ class UserAuthController extends Controller
             return response()->json([
                 "seccess" => false,
                 "message" => "le mode passé n'est pas valide",
-            ],202); 
-            
+            ],202);
+            try {
+                $token = JWTAuth::fromUser($user);
+            } catch (JWTException $e) {
+                return response()->json([
+                    "success" => false,
+                    "message" => "Impossible de générer le token : " . $e->getMessage()
+                ], 500);
+            }
+    
+            // Retourner le token
+            return response()->json([
+                "success" => true,
+                "message" => "Connexion réussie.",
+                "token" => $token,
+                "user" => $user
+            ], 200);
         return  response()->json(["message" => "login"]);
 
         }catch(ValidationException  $e){
