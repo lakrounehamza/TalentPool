@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('annonce_id');
+            $table->foreign('annonce_id')->references('id')->on('annonces')->onDelete('cascade');
+            $table->unsignedBigInteger('candidate_id');
+            $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
+            $table->string('status');
+            $table->string('cv');
             $table->timestamps();
         });
     }

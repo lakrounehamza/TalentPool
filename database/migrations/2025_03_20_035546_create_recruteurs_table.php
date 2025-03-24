@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recruteurs', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("id")->primary();  
+            $table->foreign("id")->references("id")->on("users")->onDelete("cascade");  
             $table->timestamps();
         });
     }
