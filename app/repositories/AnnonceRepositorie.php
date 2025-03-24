@@ -5,12 +5,26 @@ use App\Contract\AnnonceRepositoryInterface;
 class AnnonceRepositorie implements AnnonceRepositoryInterface{
 
     public function  getAnnonce(Annonce $annonce){
-        return  ;
+        return  $annonce;
     }
-    public function  getAllAnnonce(){}
-    public function  deleteAnnonce(Annonce  $annonce){}
-    public function  updateAnnonce(Annonce  $annonce , Array $attributes){}
-    public function  createAnnonce(Array $attributes){}
-    public function  getAnnonceByUser($user){}
-    public function  getAnnonceByStatus($status){}
+    public function  getAllAnnonce(){
+        $annonces = Annonce::all();
+        return  $annonces;
+    }
+    public function  deleteAnnonce(Annonce  $annonce){
+        $annonce->delete();
+    }
+    public function  updateAnnonce(Annonce  $annonce , Array $attributes){
+        $annonce->update($attributes);
+    }
+    public function  createAnnonce(Array $attributes){
+        Annonce::create($attributes);
+    }
+    public function  getAnnonceByUser($user){
+        $annonces = Annonce::where('recruteur_id',$user->id);
+        return  $annonces; 
+    }
+    public function  getAnnonceByStatus($status){
+        $annonces = Annonce::where('status' , $status);
+    }
 }
