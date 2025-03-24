@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests; //CreateAnnonceRequest
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -23,7 +23,7 @@ class CreateAnnonceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titre' => 'required|string',
+            'title' => 'required|string',
             'description' => 'required|string',
             'status'=> 'required|string',
             'recruteur_id'=> 'required|integer',

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Annonce extends Model
 {
     protected  $fillable  = [
-        'titre',
+        'title',
         'description',
         'status',
         'recruteur_id',
