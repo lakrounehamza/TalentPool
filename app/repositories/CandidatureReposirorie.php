@@ -1,6 +1,6 @@
 <?php
 
-namespace App\repositories;
+namespace App\repositories; 
 use App\Contract\CandidatureRepositoryInterface;
 use App\Models\Candidature;
 use App\Models\Candidate;

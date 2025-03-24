@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Annonce;
 use App\Repositories\AnnonceRepositorie;
 use App\Http\Requests\CreateAnnonceRequest;
+use App\Http\Requests\UpdateAnnonceRequest;
 class AnnonceController extends Controller
 {
     private AnnonceRepositorie $annonceRepository;
@@ -40,22 +41,32 @@ class AnnonceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $annonce = Annonce::find($id);
+        return response()->json($annonce);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Annonce  $annonce, UpdateAnnonceRequest $request)
     {
-        //
+        $this->annonceRepository->updateAnnonce($annonce, $request->all());
+        return response()->json([
+            'success' => true,
+            'message' => 'Annonce updated successfully'
+        ]);
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Annonce  $annonce)
     {
-        //
+        $this->annonceRepository->deleteAnnonce($annonce);
+        return response()->json([
+            'success' => true,
+            'message' => 'Annonce deleted successfully'
+        ]);
     }
 }
