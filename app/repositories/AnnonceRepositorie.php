@@ -4,6 +4,9 @@ use App\Models\Annonce;
 use App\Contract\AnnonceRepositoryInterface;
 class AnnonceRepositorie implements AnnonceRepositoryInterface{
 
+    public function __construct(){
+
+    }
     public function  getAnnonce(Annonce $annonce){
         return  $annonce;
     }
