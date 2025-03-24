@@ -7,4 +7,6 @@ public function  getAllAnnonce();
 public function  deleteAnnonce(Annonce  $annonce);
 public function  updateAnnonce(Annonce  $annonce , Array $attributes);
 public function  createAnnonce(Array $attributes);
+public function  getAnnonceByUser($user);
+public function  getAnnonceByStatus($status);
 }

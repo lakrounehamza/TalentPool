@@ -9,4 +9,5 @@ interface UserRepositoryInterfac{
     public function editeUser(User  $user);
     public function createUser(array  $attributes);
     public function deleteUser(User $user,array $attributes);
+    public function getUserByRole($role);
 } 
