@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\repositories\CandidatureReposirorie;
 use App\Http\Requests\CreateCandidatureRequeste;
+use App\Http\Requests\PutCandidatureRequeste;
+use App\Http\Requests\UpdateCandidatureRequeste;
 use  App\Models\Candidature;
+
 class candidatureController extends Controller
 {
     private $candidatureReposirorie;
@@ -35,7 +38,7 @@ class candidatureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( Candidature  $candidature)
+    public function show(Candidature  $candidature)
     {
         return response()->json($candidature);
     }
@@ -43,9 +46,15 @@ class candidatureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCandidatureRequeste $request , Candidature $candidature)
     {
-        //
+        $candidature = $this->candidatureReposirorie->updateCandidature( $candidature , $request->all());
+        return response()->json($candidature);
+    }
+    public function  Put(PutCandidatureRequeste $request, Candidature $candidature)
+    {
+        $candidature = $this->candidatureReposirorie->updateCandidature( $candidature , $request->all());
+        return response()->json($candidature);
     }
 
     /**
