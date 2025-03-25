@@ -60,8 +60,9 @@ class candidatureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Candidature $candidature)
     {
-        //
+        $candidature = $this->candidatureReposirorie->deleteCandidature($candidature);
+        return response()->json($candidature);
     }
 }
