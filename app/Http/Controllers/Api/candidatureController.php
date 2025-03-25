@@ -9,6 +9,7 @@ use App\Http\Requests\CreateCandidatureRequeste;
 use App\Http\Requests\PutCandidatureRequeste;
 use App\Http\Requests\UpdateCandidatureRequeste;
 use  App\Models\Candidature;
+use  App\Models\Candidate;
 
 class candidatureController extends Controller
 {
@@ -63,6 +64,11 @@ class candidatureController extends Controller
     public function destroy(Candidature $candidature)
     {
         $candidature = $this->candidatureReposirorie->deleteCandidature($candidature);
+        return response()->json($candidature);
+    }
+    public function  getCandidatureByCandidat(Candidate $candidate)
+    {
+        $candidature = $this->candidatureReposirorie->getCandidatureByCandidat($candidate);
         return response()->json($candidature);
     }
 }
