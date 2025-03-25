@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\repositories\CandidatureReposirorie;
+use App\Http\Requests\CreateCandidatureRequeste;
+use  App\Models\Candidature;
 class candidatureController extends Controller
 {
     private $candidatureReposirorie;
@@ -24,17 +26,18 @@ class candidatureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCandidatureRequeste $request)
     {
-        //
+        $candidature = $this->candidatureReposirorie->createCandidature($request->all());
+        return response()->json($candidature);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( Candidature  $candidature)
     {
-        //
+        return response()->json($candidature);
     }
 
     /**

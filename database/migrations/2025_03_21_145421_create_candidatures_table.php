@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+    /**@param  annonce_id , candidate_id, status, cv 
      * Run the migrations.
      */
     public function up(): void
