@@ -38,7 +38,9 @@ Cette API, développée en Laravel, permet la gestion des recrutements en facili
 - PHP 8.3.14 installé
 - MySQL et un serveur Web (Apache, Nginx)
 - Composer et Node.js
-
+### les  consuption   
+### daigrame e class  
+<!-- ![Description de l'image](images/images.jpg) -->
 ### - Installation
 1. **Cloner le projet** :
    ```sh
