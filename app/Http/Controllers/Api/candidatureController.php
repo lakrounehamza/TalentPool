@@ -72,4 +72,15 @@ class candidatureController extends Controller
         $candidature = $this->candidatureReposirorie->getCandidatureByCandidat($candidate);
         return response()->json(["message" => "Candidature by candidat", "data" => $candidature, "candidate" => $candidate]);
     }
+    public function  getCandidatureByStatus(string  $status)
+    {
+        $candidature = $this->candidatureReposirorie->getCandidatureByStatus($status);
+        return response()->json(["message" => "Candidature by status", "data" => $candidature]);
+    }
+    public function  getCandidatureByCandidatAndStatus(string  $id, string  $status)
+    {
+        $candidate = Candidate::find($id);
+        $candidature = $this->candidatureReposirorie->getCandidatureByCandidatAndStatus($candidate, $status);
+        return response()->json(["message" => "Candidature by candidat and status", "data" => $candidature, "candidate" => $candidate]);
+    }
 }

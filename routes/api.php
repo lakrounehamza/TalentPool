@@ -34,7 +34,7 @@ Route::put('/candidatures/{candidature}',[CandidatureController::class,'update']
 Route::delete('/candidatures/{candidature}',[CandidatureController::class,'destroy']);
 
 Route::get('/candidatures/candidat/{id}',[CandidatureController::class,'getCandidatureByCandidat']);
-Route::get('/candidatures/{id}/status',[CandidatureController::class,'getCandidatureByStatus']);
+Route::get('/candidatures/{id}/{status}',[CandidatureController::class,'getCandidatureByCandidatAndStatus']);
 Route::get('/candidatures/miennes/status',[CandidatureController::class,'getCandidatureByCandidat']);
 Route::get('/notification/candidatures/{id}',[CandidatureController::class,'getCandidatureByStatus']);
 
