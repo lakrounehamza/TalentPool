@@ -8,19 +8,17 @@ use App\Models\Recruteur;
 use App\Models\Candidate;
 use App\Models\Annonce;
 use App\Models\Candidature;
-
+use App\Repositories\AdminRepositorie;
 class AdminController extends Controller
 {
+    private $adminRepositorie;
+    public function __construct(AdminRepositorie $adminRepositorie)
+    {
+        $this->adminRepositorie = $adminRepositorie;
+    }
    public function globales(){
-         $recruteurs = Recruteur::count();
-         $candidates = Candidate::count();
-         $annonces = Annonce::count();
-         $candidatures = Candidature::count();
-         return response()->json([
-              'recruteurs' => $recruteurs,
-              'candidates' => $candidates,
-              'annonces' => $annonces,
-              'candidatures' => $candidatures
-         ]);
+        $data = $this->adminRepositorie->global();
+        return response()->json($data);
+       
    }
 }
