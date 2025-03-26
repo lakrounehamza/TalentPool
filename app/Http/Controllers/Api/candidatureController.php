@@ -66,9 +66,10 @@ class candidatureController extends Controller
         $candidature = $this->candidatureReposirorie->deleteCandidature($candidature);
         return response()->json($candidature);
     }
-    public function  getCandidatureByCandidat(Candidate $candidate)
+    public function  getCandidatureByCandidat(string  $id)
     {
+        $candidate = Candidate::find($id);
         $candidature = $this->candidatureReposirorie->getCandidatureByCandidat($candidate);
-        return response()->json($candidature);
+        return response()->json(["message" => "Candidature by candidat", "data" => $candidature, "candidate" => $candidate]);
     }
 }

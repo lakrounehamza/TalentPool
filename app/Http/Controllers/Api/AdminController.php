@@ -44,6 +44,11 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
+    public function globales()
+    {
+        
+    }
+
 }

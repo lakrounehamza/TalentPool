@@ -9,4 +9,8 @@ class Candidate extends Model
     protected $fillable = [
         'id',
     ];
+    public function candidatures()
+    {
+        return $this->hasMany(Candidature::class);
+    }
 }

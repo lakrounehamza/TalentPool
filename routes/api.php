@@ -21,25 +21,25 @@ Route::post('auth/refresh',[UserAuthController::class,'refresh']);
 Route::post('auth/password/forgot',[UserAuthController::class,'forgot']);
 Route::post('auth/password/reset',[UserAuthController::class,'reset']);
 
-Route::get('/annonces/{id}',AnnonceController::class,'show');
-Route::get('/annonces',AnnonceController::class,'index');
-Route::post('/annonces',AnnonceController::class,'store');
-Route::put('/annonces/{id}',AnnonceController::class,'update');
-Route::delete('/annonces/{id}',AnnonceController::class,'destroy');
+Route::get('/annonces/{annonce}',[AnnonceController::class,'show']);
+Route::get('/annonces',[AnnonceController::class,'index']);
+Route::post('/annonces',[AnnonceController::class,'store']);
+Route::put('/annonces/{annonce}',[AnnonceController::class,'update']);
+Route::delete('/annonces/{annonce}',[AnnonceController::class,'destroy']);
 
-Route::get('/candidatures',CandidatureController::class,'index');
-Route::get('/candidatures/{id}',CandidatureController::class,'show');
-Route::post('/candidatures',CandidatureController::class,'store');
-Route::put('/candidatures/{id}',CandidatureController::class,'update');
-Route::delete('/candidatures/{id}',CandidatureController::class,'destroy');
+Route::get('/candidatures',[CandidatureController::class,'index']);
+Route::get('/candidatures/{candidature}',[CandidatureController::class,'show']);
+Route::post('/candidatures',[CandidatureController::class,'store']);
+Route::put('/candidatures/{candidature}',[CandidatureController::class,'update']);
+Route::delete('/candidatures/{candidature}',[CandidatureController::class,'destroy']);
 
-Route::get('/candidatures/candidat/{id}',CandidatureController::class,'getCandidatureByCandidat');
-Route::get('/candidatures/{id}/status',CandidatureController::class,'getCandidatureByStatus');
-Route::get('/candidatures/miennes/status',CandidatureController::class,'getCandidatureByCandidat');
-Route::get('/notification/candidatures/{id}',CandidatureController::class,'getCandidatureByStatus');
+Route::get('/candidatures/candidat/{id}',[CandidatureController::class,'getCandidatureByCandidat']);
+Route::get('/candidatures/{id}/status',[CandidatureController::class,'getCandidatureByStatus']);
+Route::get('/candidatures/miennes/status',[CandidatureController::class,'getCandidatureByCandidat']);
+Route::get('/notification/candidatures/{id}',[CandidatureController::class,'getCandidatureByStatus']);
 
-Route::get('/utilisateurs/profil',UserController::class,'index');
-Route::get('/utilisateurs/profil/{id}',UserController::class,'show');
-Route::delete('/utilisateurs/{id}',UserController::class,'destroy');
-Route::get('/stats/recruteur',RecruteurController::class,'recruteur');
-Route::get('/stats/globales',AdminController::class,'globales');
+Route::get('/utilisateurs/profil',[UserController::class,'index']);
+Route::get('/utilisateurs/profil/{id}',[UserController::class,'show']);
+Route::delete('/utilisateurs/{id}',[UserController::class,'destroy']);
+Route::get('/stats/recruteur',[RecruteurController::class,'recruteur']);
+Route::get('/stats/globales',[AdminController::class,'globales']);

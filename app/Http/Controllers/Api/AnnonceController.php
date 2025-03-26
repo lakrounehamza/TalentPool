@@ -69,4 +69,5 @@ class AnnonceController extends Controller
             'message' => 'Annonce deleted successfully'
         ]);
     }
+    
 }

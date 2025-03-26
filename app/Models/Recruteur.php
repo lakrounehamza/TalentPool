@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recruteur extends Model
 {
-    protected  $fillable =[];
+    protected  $fillable =['id',];
+    public function annonces()
+    {
+        return  $this->hasMany(Annonce::class);
+    }
 }

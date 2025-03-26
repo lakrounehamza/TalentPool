@@ -9,4 +9,5 @@ class Admin extends User
     protected  $fillable =[
         'id',
     ];
+    
 }
