@@ -23,8 +23,6 @@ class RecruteurRepositorie
         ->join('annonces', 'annonces.id', '=', 'candidatures.annonce_id')
         ->where('annonces.recruteur_id', $id)
         ->count();
-
-
     $data = [
       'candidates' => $candidates,
       'annonces' => $annonces,

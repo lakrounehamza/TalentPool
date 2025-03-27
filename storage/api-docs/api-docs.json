@@ -1,0 +1,29 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/annonces": {
+            "get": {
+                "summary": "Retrieve a list of users",
+                "operationId": "cc03fa07f61c8dbfb8a2202b4f36cc62",
+                "responses": {
+                    "200": {
+                        "description": "A list of users."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

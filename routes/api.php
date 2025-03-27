@@ -39,7 +39,7 @@ Route::get('/candidatures/miennes/status',[CandidatureController::class,'getCand
 Route::get('/notification/candidatures/{id}',[CandidatureController::class,'getCandidatureByStatus']);
 
 Route::get('/utilisateurs/profil',[UserController::class,'index']);
-Route::get('/utilisateurs/profil/{id}',[UserController::class,'show']);
-Route::delete('/utilisateurs/{id}',[UserController::class,'destroy']);
+Route::get('/utilisateurs/profil/{user}',[UserController::class,'show']);
+Route::delete('/utilisateurs/{user}',[UserController::class,'destroy']);
 Route::get('/stats/recruteur',[RecruteurController::class,'recruteur']);
 Route::get('/stats/globales',[AdminController::class,'globales']);
