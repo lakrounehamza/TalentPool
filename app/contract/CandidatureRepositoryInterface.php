@@ -15,4 +15,5 @@ interface CandidatureRepositoryInterface
     public function getCandidatureByCandidat(Candidate $candidate);
     public function getCandidatureByStatus($status);
     public function getCandidatureByCandidatAndStatus(Candidate $candidate, $status);
+    public function notificationCandidature($candidatureId);
 }

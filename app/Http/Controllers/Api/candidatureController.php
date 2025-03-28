@@ -467,4 +467,52 @@ class candidatureController extends Controller
         $candidature = $this->candidatureReposirorie->getCandidatureByCandidatAndStatus($candidate, $status);
         return response()->json(["message" => "Candidature by candidat and status", "data" => $candidature, "candidate" => $candidate]);
     }
+    
+    /**
+     * @OA\Get(
+     *     path="/api/notification/candidatures/{id}",
+     *     summary="Récupérer les notifications d'une candidature",
+     *     description="Récupère les informations de notification pour une candidature spécifique.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="Identifiant de la candidature",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Notification récupérée avec succès.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="Notification de candidature"),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="object",
+     *                 @OA\Property(property="candidature_id", type="integer", example=1),
+     *                 @OA\Property(property="annonce_id", type="integer", example=3),
+     *                 @OA\Property(property="annonce_title", type="string", example="Développeur Full Stack"),
+     *                 @OA\Property(property="status", type="string", example="accepted"),
+     *                 @OA\Property(property="date", type="string", format="date-time", example="2025-03-24T15:11:09.000000Z"),
+     *                 @OA\Property(property="message", type="string", example="Félicitations ! Votre candidature a été acceptée.")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Candidature non trouvée.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Candidature non trouvée")
+     *         )
+     *     )
+     * )
+     */
+    public function notificationCandidature(string $id)
+    {
+        $result = $this->candidatureReposirorie->notificationCandidature($id);
+        return response()->json($result);
+    }
 }

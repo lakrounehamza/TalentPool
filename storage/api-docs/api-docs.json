@@ -2192,6 +2192,96 @@
                     }
                 }
             }
+        },
+        "/api/notification/candidatures/{id}": {
+            "get": {
+                "summary": "Récupérer les notifications d'une candidature",
+                "description": "Récupère les informations de notification pour une candidature spécifique.",
+                "operationId": "fc826542c10df318c6d0894bb272c4d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant de la candidature",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification récupérée avec succès.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Notification de candidature"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "candidature_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "annonce_id": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                },
+                                                "annonce_title": {
+                                                    "type": "string",
+                                                    "example": "Développeur Full Stack"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "accepted"
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-24T15:11:09.000000Z"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Félicitations ! Votre candidature a été acceptée."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Candidature non trouvée.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Candidature non trouvée"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
